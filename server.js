@@ -78,7 +78,7 @@ const filterUsersByRole = (users, role) => {
 
 const typeDefs = `
   type Query {
-    users(role: String): [User]
+    users(role: String!): [User]
   }
 
 	type User {

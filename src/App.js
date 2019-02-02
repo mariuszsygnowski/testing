@@ -12,6 +12,19 @@ const client = new ApolloClient({
 });
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      selectValue: "ADMIN"
+    };
+    this.handleChangeSelectValue = this.handleChangeSelectValue.bind(this);
+  }
+
+  handleChangeSelectValue(e) {
+    this.setState({
+      selectValue: e.target.value
+    });
+  }
   render() {
     return (
       <ApolloProvider client={client}>
@@ -23,13 +36,16 @@ class App extends Component {
 
             <h2>Users</h2>
 
-            <select>
+            <select
+              value={this.state.selectValue}
+              onChange={this.handleChangeSelectValue}
+            >
               <option value="ADMIN">Admin</option>
               <option value="BROKER">Broker</option>
               <option value="ADVISOR">Advisor</option>
             </select>
 
-            <UserList />
+            <UserList selectedUser={this.state.selectValue} />
 
             <ul>
               <li>
