@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { ApolloProvider } from "react-apollo";
 import ApolloClient from "apollo-boost";
 
+import UserList from "./components/UserList";
+
 import logo from "./acre-logo.svg";
 import "./App.css";
 
@@ -23,9 +25,11 @@ class App extends Component {
 
             <select>
               <option value="ADMIN">Admin</option>
-              <option value="ADMIN">Broker</option>
+              <option value="BROKER">Broker</option>
               <option value="ADVISOR">Advisor</option>
             </select>
+
+            <UserList />
 
             <ul>
               <li>
