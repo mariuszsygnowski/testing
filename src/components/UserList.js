@@ -4,10 +4,9 @@ import { Query } from "react-apollo";
 
 import SingleUser from "./SingleUser";
 
-// const aa = this.props.selectedUser;
 const LAUNCHES_QUERY = gql`
-  query($selectedUser: String!) {
-    users(role: $selectedUser) {
+  query($selectedRole: String!) {
+    users(role: $selectedRole) {
       name
       role
       createdAt
@@ -17,21 +16,25 @@ const LAUNCHES_QUERY = gql`
 
 export class UserList extends Component {
   render() {
-    const { selectedUser } = this.props;
+    //Point 2 from "what to do"
+    //I passing trough props selectedRole and desctructing
+    //to variable selectedRole
+    const { selectedRole } = this.props;
 
     return (
       <Fragment>
-        <Query query={LAUNCHES_QUERY} variables={{ selectedUser }}>
+        {/* I passing selectedRole trough variables */}
+        <Query query={LAUNCHES_QUERY} variables={{ selectedRole }}>
           {({ loading, error, data }) => {
             if (loading) return <h4>loading...</h4>;
             if (error) console.log(error);
             console.log(data);
             return (
-              <div>
-                {data.users.map(user => (
-                  <SingleUser key={user.name} user={user} />
+              <ul>
+                {data.users.map((user, index) => (
+                  <SingleUser key={index} user={user} />
                 ))}
-              </div>
+              </ul>
             );
           }}
         </Query>

@@ -15,16 +15,18 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectValue: "ADMIN"
+      //initail selected role
+      selectedRole: "ADMIN"
     };
-    this.handleChangeSelectValue = this.handleChangeSelectValue.bind(this);
+    this.handleChangeSelectedRole = this.handleChangeSelectedRole.bind(this);
   }
 
-  handleChangeSelectValue(e) {
+  handleChangeSelectedRole(event) {
     this.setState({
-      selectValue: e.target.value
+      selectedRole: event.target.value
     });
   }
+
   render() {
     return (
       <ApolloProvider client={client}>
@@ -37,24 +39,15 @@ class App extends Component {
             <h2>Users</h2>
 
             <select
-              value={this.state.selectValue}
-              onChange={this.handleChangeSelectValue}
+              value={this.state.selectedRole}
+              onChange={this.handleChangeSelectedRole}
             >
               <option value="ADMIN">Admin</option>
               <option value="BROKER">Broker</option>
               <option value="ADVISOR">Advisor</option>
             </select>
 
-            <UserList selectedUser={this.state.selectValue} />
-
-            <ul>
-              <li>
-                John <strong>Admin</strong>
-              </li>
-              <li>
-                Mary <strong>Admin</strong>
-              </li>
-            </ul>
+            <UserList selectedRole={this.state.selectedRole} />
           </header>
         </div>
       </ApolloProvider>

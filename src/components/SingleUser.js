@@ -1,19 +1,20 @@
 import React, { Fragment } from "react";
 
 export default function SingleUser({ user: { name, role, createdAt } }) {
+  //Point 3 from "what to do"
+  //I checeking here if name is an empty string so I return just Fragment
   if (name === "") {
-    // console.log("ok");
     return <Fragment />;
   } else {
     return (
-      <div style={{ border: "solid" }}>
-        <h2>{name}</h2>
-        {role.map(item => (
-          <div key={item}>
-            <h2>{item}</h2>
-          </div>
+      <li>
+        {name} {""}
+        {role.map((item, index) => (
+          <Fragment key={index}>
+            <strong> {item.charAt(0) + item.slice(1).toLowerCase()}</strong>
+          </Fragment>
         ))}
-      </div>
+      </li>
     );
   }
 }
