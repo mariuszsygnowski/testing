@@ -31,14 +31,15 @@ class App extends Component {
     return (
       <ApolloProvider client={client}>
         <div className="app">
-          <header className="app-header">
-            <img src={logo} className="app-logo" alt="logo" />
+          <header className="app__header">
+            <img src={logo} className="app__logo" alt="logo" />
 
             <h1>Welcome to acre</h1>
 
             <h2>Users</h2>
 
             <select
+              className="app__select"
               value={this.state.selectedRole}
               onChange={this.handleChangeSelectedRole}
             >

@@ -26,9 +26,8 @@ export class UserList extends Component {
         {/* I passing selectedRole trough variables */}
         <Query query={LAUNCHES_QUERY} variables={{ selectedRole }}>
           {({ loading, error, data }) => {
-            if (loading) return <h4>loading...</h4>;
+            if (loading) return <h2>loading...</h2>;
             if (error) console.log(error);
-            console.log(data);
             return (
               <ul>
                 {data.users.map((user, index) => (

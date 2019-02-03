@@ -10,9 +10,10 @@ export default function SingleUser({ user: { name, role, createdAt } }) {
       <li>
         {name} {""}
         {role.map((item, index) => (
-          <Fragment key={index}>
-            <strong> {item.charAt(0) + item.slice(1).toLowerCase()}</strong>
-          </Fragment>
+          <strong key={index}>
+            {" "}
+            {item.charAt(0) + item.slice(1).toLowerCase()}
+          </strong>
         ))}
       </li>
     );
